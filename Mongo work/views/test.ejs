@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css" />
+    
+  <link
+  href="https://fonts.googleapis.com/css?family=Baloo+Bhai%7CCandal%7CChewy&display=swap"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+  integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+  crossorigin="anonymous"
+/>
+</head>
+<body>
+
+  <div class="grade-container">
+    <h2>Student Finder</h2>
+    <div>
+        <form method="POST">
+            <ul class="grade-form">
+                <li>Student Id: <input type="number" class="number-input" min=1 max=9999 name="student_id" required="true"></li>
+                <li>Class Number: <input type="number" class="number-input" min=0 max=500 name="class_id" required="true"></li>
+                <li>Assignment Catagory: <input type="text" class="number-input" name="assignment_name" required="true"></li>
+                <li>Assignment Score: <input type="number" class="number-input" min=0 max=100 name="assignment_score" required="true"></li>
+                <li><button type="submit" class="number-answer" id="sbmt" formaction="/colorpost">Submit</button>
+                    <button type="submit" class="number-answer" id="find" formaction="/colorfind">Find</button></li>
+            </ul>
+        </form>
+    </div>  
+</div>
+<div class="todo-container answer">
+    <ul>
+            <li class="todo-list-item-name"></li>
+    </ul>
+
+    <ul class="grade-list">
+        <% GradeAverage.forEach(details => { %>
+          <% if (details.student_id == student) { %>
+        <li class="todo-list-item">
+            <div class="todo-list-item-name student">Student Id: <%= details.student_id %></div>
+            <div class="todo-list-item-name class">Class Id: <%= details.class_id %></div>
+            <a href="color/remove/<%= details._id %>" class="remove">
+              <span class="fas fa-times"></span>
+            </a>
+        </li>
+          <% } %>
+        <% }) %>
+      </ul>
+</div>
+</body>
+</html>
